@@ -33,15 +33,29 @@ interface IOrderDetail {
 const orderByMe = new Order(dinerTable);
 const orderByYou = new Order(dinerTable, 5);
 
-class FurnitureWithDiscount extends Furniture{
+class FurnitureWithDiscount extends Furniture {
     discountCodes: DiscountCode[];
 }
 
 class OrderWithDiscount extends Order {
-    
+
     constructor(furniture: Furniture, quantity?: number) {
         super(furniture, quantity)
     }
 
     discountCode: DiscountCode;
+}
+
+class article {
+    private _unitPrice: number;
+    get unitPrice(): number {
+        return this._unitPrice || 0;
+    }
+
+    set unitPrice(value: number) {
+        if (value < 0) {
+            value = 0;
+        }
+        this._unitPrice = value;
+    }
 }
